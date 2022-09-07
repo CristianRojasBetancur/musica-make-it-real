@@ -1,2 +1,33 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="pb-5"><strong><%= @artist.name %></strong></h1>
+      <h5 class="mt-4"><strong>Albums (<%= @artist.albums.size %>)</strong></h5>
+      <div class="row">
+        <% @artist.albums.each do |album| %>
+          <div class="col-sm-3">
+            <div class="card mt-4" style="width: 15rem;">
+              <img
+                src="<%= album.image_url %>"
+                class="card-img-top"
+                alt="photo_<%= album.name %>"
+              />
+              <div class="card-body">
+                <h4 class="card-title"><strong><%= album.name %></strong></h4>
+                <p class="card-text"><%= album.released_at.strftime("%Y")%> </p>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <img
+        style="width: 30rem;"
+        src="<%= @artist.image_url %>"
+        alt="photo_<%= @artist.name %>"
+      >
+    </div>
+  </div>
+</div>
